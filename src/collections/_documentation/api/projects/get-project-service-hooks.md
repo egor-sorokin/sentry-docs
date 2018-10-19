@@ -3,10 +3,10 @@
 # Do not manually this file.
 {
   "api_path": "/api/0/projects/{organization_slug}/{project_slug}/hooks/", 
-  "authentication": "", 
-  "description": "Return a list of service hooks bound to a project.", 
+  "authentication": "required", 
+  "description": "Return a list of service hooks bound to a project.\n\nThis endpoint requires the 'servicehooks' feature to\nbe enabled for your project.", 
   "example_request": "GET /api/0/projects/the-interstellar-jurisdiction/pump-station/hooks/ HTTP/1.1\nHost: sentry.io\nAuthorization: Bearer {base64-encoded-key-here}", 
-  "example_response": "HTTP/1.1 403 FORBIDDEN\nContent-Length: 89\nX-XSS-Protection: 1; mode=block\nContent-Language: en\nX-Content-Type-Options: nosniff\nVary: Accept-Language, Cookie\nAllow: GET, POST, HEAD, OPTIONS\nX-Frame-Options: deny\nContent-Type: application/json\n\n{\n  \"detail\": [\n    \"You do not have that feature enabled\"\n  ], \n  \"error_type\": \"unavailable_feature\"\n}", 
+  "example_response": "HTTP/1.1 200 OK\nContent-Length: 271\nX-XSS-Protection: 1; mode=block\nX-Content-Type-Options: nosniff\nContent-Language: en\nVary: Accept-Language, Cookie\nLink: <https://sentry.io/api/0/projects/the-interstellar-jurisdiction/pump-station/hooks/?&cursor=1:0:1>; rel=\"previous\"; results=\"false\"; cursor=\"1:0:1\", <https://sentry.io/api/0/projects/the-interstellar-jurisdiction/pump-station/hooks/?&cursor=1:100:0>; rel=\"next\"; results=\"false\"; cursor=\"1:100:0\"\nAllow: GET, POST, HEAD, OPTIONS\nX-Frame-Options: deny\nContent-Type: application/json\n\n[\n  {\n    \"dateCreated\": \"2018-10-19T17:00:54.970Z\", \n    \"events\": [\n      \"event.alert\", \n      \"event.created\"\n    ], \n    \"id\": \"b24dab8ba92e4c73bf50126e95881116\", \n    \"secret\": \"db60e15f351843e8958be3a744c38bb855bb7d3a59d54c27aef44ae0a9456581\", \n    \"status\": \"active\", \n    \"url\": \"https://example.com/sentry-hook\"\n  }\n]", 
   "method": "GET", 
   "parameters": null, 
   "path_parameters": [
@@ -22,7 +22,7 @@
     }
   ], 
   "query_parameters": null, 
-  "sidebar_order": 7, 
+  "sidebar_order": 8, 
   "title": "List a Project's Service Hooks", 
   "warning": null
 }
